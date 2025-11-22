@@ -11,6 +11,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float movementSpeed = 2f;
 
     private CharacterController charController;
+    public NotebookToggle notebook;
 
 
     private void Awake()
@@ -20,18 +21,20 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
+        if (notebook != null && notebook.NotebookIsOpen())
+            return;
+
         PlayerMovement();
     }
 
     private void PlayerMovement()
     {
-        float vertInput = Input.GetAxis(verticalInputName) * movementSpeed;     //CharacterController.SimpleMove() applies deltaTime
+        float vertInput = Input.GetAxis(verticalInputName) * movementSpeed;    
         float horizInput = Input.GetAxis(horizontalInputName) * movementSpeed;
 
         Vector3 forwardMovement = transform.forward * vertInput;
         Vector3 rightMovement = transform.right * horizInput;
 
-        //simple move applies delta time automatically
         charController.SimpleMove(forwardMovement + rightMovement);
     }
 }

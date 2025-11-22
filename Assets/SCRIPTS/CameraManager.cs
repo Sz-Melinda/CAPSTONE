@@ -8,7 +8,7 @@ public class CameraMode : MonoBehaviour
     public GameObject gameUI;         
     public KeyCode toggleKey = KeyCode.C;
     public KeyCode photoKey = KeyCode.Space;
-    public string screenshotFolder = "Screenshots";
+    public string screenshotsFolder = "Screenshots";
 
     private bool cameraActive = false;
 
@@ -33,15 +33,20 @@ public class CameraMode : MonoBehaviour
 
         yield return new WaitForEndOfFrame(); 
 
-        string folderPath = Path.Combine(Application.persistentDataPath, screenshotFolder);
+        string folderPath = Path.Combine(Application.persistentDataPath, screenshotsFolder);
         if (!Directory.Exists(folderPath))
             Directory.CreateDirectory(folderPath);
 
-        string path = Path.Combine(folderPath,
-            $"photo_{System.DateTime.Now:yyyyMMdd_HHmmss}.png");
+        string fileName = $"photo_{System.DateTime.Now:yyyyMMdd_HHmmss}.png";
+        string path = Path.Combine(folderPath, fileName);
 
         ScreenCapture.CaptureScreenshot(path);
         Debug.Log("Saved photo: " + path);
+
+        while (!File.Exists(path))
+            yield return null;
+
+        FindObjectOfType<NotebookGallery>()?.Refresh();
 
         yield return null; 
 
@@ -49,5 +54,10 @@ public class CameraMode : MonoBehaviour
             cameraUI.SetActive(true);
         else
             gameUI.SetActive(true);
+    }
+
+    public bool CameraIsActive()
+    {
+        return cameraActive;
     }
 }

@@ -10,6 +10,8 @@ public class CameraMode : MonoBehaviour
     public KeyCode photoKey = KeyCode.Space;
     public string screenshotsFolder = "Screenshots";
 
+    public AudioSource shutterSound;  
+
     private bool cameraActive = false;
 
     void Update()
@@ -28,10 +30,11 @@ public class CameraMode : MonoBehaviour
 
     IEnumerator TakePhoto()
     {
+        if (shutterSound != null)
+            shutterSound.Play();
+
         cameraUI.SetActive(false);
         gameUI.SetActive(false);
-
-        yield return new WaitForEndOfFrame(); 
 
         string folderPath = Path.Combine(Application.persistentDataPath, screenshotsFolder);
         if (!Directory.Exists(folderPath))

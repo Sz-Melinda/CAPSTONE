@@ -1,33 +1,31 @@
-using System.Collections;
 using UnityEngine;
 
 public class NotebookToggle : MonoBehaviour
 {
     public GameObject notebookUI;
-    public KeyCode toggleKey = KeyCode.N;
-    public NotebookGallery gallery; 
+    public KeyCode toggleKey = KeyCode.Tab;
 
-    private Coroutine autoRefreshCoroutine;
+    void Start()
+    {
+        notebookUI.SetActive(false);
+    }
 
     void Update()
     {
         if (Input.GetKeyDown(toggleKey))
         {
-            bool isActive = !notebookUI.activeSelf;
-            notebookUI.SetActive(isActive);
+            bool nowActive = !notebookUI.activeSelf;
+            notebookUI.SetActive(nowActive);
 
-            if (isActive && gallery != null)
+            if (nowActive)
             {
-                gallery.Refresh(); 
-                autoRefreshCoroutine = StartCoroutine(AutoRefreshGallery());
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
             }
             else
             {
-                if (autoRefreshCoroutine != null)
-                {
-                    StopCoroutine(autoRefreshCoroutine);
-                    autoRefreshCoroutine = null;
-                }
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
             }
         }
     }
@@ -35,14 +33,5 @@ public class NotebookToggle : MonoBehaviour
     public bool NotebookIsOpen()
     {
         return notebookUI.activeSelf;
-    }
-
-    private IEnumerator AutoRefreshGallery()
-    {
-        while (notebookUI.activeSelf)
-        {
-            gallery.Refresh();
-            yield return new WaitForSeconds(1f); 
-        }
     }
 }

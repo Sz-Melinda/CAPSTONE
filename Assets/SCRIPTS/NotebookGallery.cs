@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class NotebookGallery : MonoBehaviour
 {
-    public Transform container;          // MUST be assigned
-    public GameObject imagePrefab;       // MUST have RawImage
+    public Transform container;          
+    public GameObject imagePrefab;      
     public string screenshotsFolder = "Screenshots";
     public float refreshDelay = 0.2f;
 

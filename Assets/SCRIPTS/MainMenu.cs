@@ -9,12 +9,11 @@ public class MainMenu : MonoBehaviour
 
     void OnEnable()
     {
-        // Show and unlock the cursor
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
 
-    // Gameplay
+
     public void PlayGame()
     {
         SceneManager.LoadScene(gameSceneName);
@@ -28,7 +27,6 @@ public class MainMenu : MonoBehaviour
 #endif
     }
 
-    // Credits
     public void ShowCredits()
     {
         mainMenuPanel.SetActive(false);

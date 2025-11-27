@@ -36,11 +36,13 @@ Windows
 
 **Installation**
 
-Download the Framed_Build.zip file
+Download the **Framed_Build.zip** file
 
 Extract the folder and open it
 
 Run CAPSTONE.exe
+
+(Backup link to file: https://drive.google.com/file/d/1rRNqX0NHqAYP7krhhv_ymQFvYOdu0raR/view?usp=drive_link)
 
 
 **Saving**

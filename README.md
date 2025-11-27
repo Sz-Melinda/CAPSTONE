@@ -57,7 +57,9 @@ Occasional cursor-lock inconsistencies when transitioning between menus.
 **Credits**
 
 Developer: Melinda Szikora
+
 Engine: Unity
+
 Assets: Free assets from the Unity Asset Store
 
 

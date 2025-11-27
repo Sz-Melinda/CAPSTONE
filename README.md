@@ -8,10 +8,13 @@ Framed is a first-person detective puzzle game, focusing on observation and dedu
 
 **Gameplay**
 
-Explore the crime scene
-Collect evidence using the camera 
-Record thoughts in the notebook
-Fill out a report with your final conclusion
+Explore the crime scene.
+
+Collect evidence using the camera.
+
+Record thoughts in the notebook.
+
+Fill out a report with your final conclusion.
 
 
 **Controls**
